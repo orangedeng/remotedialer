@@ -4,6 +4,8 @@ import (
 	"context"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"strconv"
 	"time"
 
 	"github.com/gorilla/websocket"
@@ -28,8 +30,18 @@ func ClientConnect(ctx context.Context, wsURL string, headers http.Header, diale
 func ConnectToProxy(rootCtx context.Context, proxyURL string, headers http.Header, auth ConnectAuthorizer, dialer *websocket.Dialer, onConnect func(context.Context, *Session) error) error {
 	logrus.WithField("url", proxyURL).Info("Connecting to proxy")
 
+	buffer := os.Getenv("BUFFER_SIZE")
+	bufferSize, _ := strconv.Atoi(buffer)
+	if bufferSize == 0 {
+		bufferSize = 4096
+	}
+
 	if dialer == nil {
-		dialer = &websocket.Dialer{Proxy: http.ProxyFromEnvironment, HandshakeTimeout: HandshakeTimeOut}
+		dialer = &websocket.Dialer{
+			Proxy: http.ProxyFromEnvironment, HandshakeTimeout: HandshakeTimeOut,
+			ReadBufferSize:  bufferSize,
+			WriteBufferSize: bufferSize,
+		}
 	}
 	ws, resp, err := dialer.DialContext(rootCtx, proxyURL, headers)
 	if err != nil {

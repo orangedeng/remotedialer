@@ -1,0 +1,16 @@
+INFO[0000] mod: direct, size: 4096      content transfer: 97.498µs      total: 866.299µs 
+INFO[0000] mod: direct, size: 262144    content transfer: 624.417µs     total: 1.02647ms 
+INFO[0000] mod: direct, size: 1048576   content transfer: 2.05906ms     total: 2.990424ms 
+INFO[0000] mod: direct, size: 4194304   content transfer: 6.837846ms    total: 7.760798ms 
+INFO[0000] mod: direct, size: 16777216  content transfer: 30.671629ms   total: 31.881404ms 
+INFO[0000] mod: direct, size: 268435456 content transfer: 488.276015ms  total: 492.736225ms 
+Listening on  :8124
+INFO[0000] Connecting to proxy                           url="ws://127.0.0.1:8124/connect"
+INFO[0000] Handling backend connection request [foo]    
+INFO[0000] proxy client connected                       
+INFO[0000] mod: proxy,  size: 4096      content transfer: 35.241µs      total: 1.137234ms 
+INFO[0000] mod: proxy,  size: 262144    content transfer: 256.289µs     total: 1.090882ms 
+INFO[0000] mod: proxy,  size: 1048576   content transfer: 1.331909ms    total: 2.269982ms 
+INFO[0000] mod: proxy,  size: 4194304   content transfer: 5.966625ms    total: 7.323062ms 
+INFO[0000] mod: proxy,  size: 16777216  content transfer: 31.34299ms    total: 33.883659ms 
+INFO[0001] mod: proxy,  size: 268435456 content transfer: 604.659363ms  total: 623.715397ms 

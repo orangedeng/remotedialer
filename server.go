@@ -2,6 +2,8 @@ package remotedialer
 
 import (
 	"net/http"
+	"os"
+	"strconv"
 	"sync"
 	"time"
 
@@ -56,10 +58,18 @@ func (s *Server) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 	logrus.Infof("Handling backend connection request [%s]", clientKey)
 
+	buffer := os.Getenv("BUFFER_SIZE")
+	bufferSize, _ := strconv.Atoi(buffer)
+	if bufferSize == 0 {
+		bufferSize = 4096
+	}
+
 	upgrader := websocket.Upgrader{
 		HandshakeTimeout: 5 * time.Second,
 		CheckOrigin:      func(r *http.Request) bool { return true },
 		Error:            s.errorWriter,
+		ReadBufferSize:   bufferSize,
+		WriteBufferSize:  bufferSize,
 	}
 
 	wsConn, err := upgrader.Upgrade(rw, req, nil)
