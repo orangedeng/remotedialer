@@ -79,6 +79,12 @@ func access(logPrefix, baseURL string, sizes ...int64) error {
 		return err
 	}
 
+	buffer := os.Getenv("BUFFER_SIZE")
+	bufferSize, _ := strconv.Atoi(buffer)
+	if bufferSize == 0 {
+		bufferSize = 4096
+	}
+
 	for _, size := range sizes {
 		query := u.Query()
 		query.Set("size", strconv.FormatInt(size, 10))
@@ -97,6 +103,8 @@ func access(logPrefix, baseURL string, sizes ...int64) error {
 					DualStack: true,
 				}).DialContext,
 				ForceAttemptHTTP2: false,
+				ReadBufferSize:    bufferSize,
+				WriteBufferSize:   bufferSize,
 			},
 		}
 		resp, err := client.Do(req)

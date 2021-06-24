@@ -29,35 +29,35 @@ Here is the result of buffer size 4k
 
 | mod    | size  | content transfer | total        |
 | ------ | ----- | ---------------- | ------------ |
-| direct | 4kb   | 60.58µs          | 668.504µs    |
-| direct | 256kb | 550.815µs        | 914.64µs     |
-| direct | 1Mb   | 3.224235ms       | 3.616695ms   |
-| direct | 4Mb   | 8.22066ms        | 9.15677ms    |
-| direct | 16Mb  | 30.850098ms      | 32.328487ms  |
-| direct | 256Mb | 477.86015ms      | 482.167926ms |
-| proxy  | 4kb   | 40.023µs         | 1.753296ms   |
-| proxy  | 256kb | 329.535µs        | 2.156589ms   |
-| proxy  | 1Mb   | 2.637765ms       | 3.876888ms   |
-| proxy  | 4Mb   | 9.944889ms       | 11.684215ms  |
-| proxy  | 16Mb  | 41.398212ms      | 43.768767ms  |
-| proxy  | 256Mb | 925.522907ms     | 946.434531ms |
+| direct | 4kb   | 37.456µs         | 704.588µs    |
+| direct | 256kb | 527.383µs        | 835.892µs    |
+| direct | 1Mb   | 1.457393ms       | 2.398064ms   |
+| direct | 4Mb   | 6.466144ms       | 7.261271ms   |
+| direct | 16Mb  | 26.824295ms      | 27.973309ms  |
+| direct | 256Mb | 453.623477ms     | 457.843783ms |
+| proxy  | 4kb   | 32.583µs         | 1.264073ms   |
+| proxy  | 256kb | 361.282µs        | 1.956524ms   |
+| proxy  | 1Mb   | 1.982524ms       | 3.381918ms   |
+| proxy  | 4Mb   | 9.284765ms       | 10.635328ms  |
+| proxy  | 16Mb  | 40.229588ms      | 43.377169ms  |
+| proxy  | 256Mb | 701.352388ms     | 720.673702ms |
 
 Here is the result of buffer size 64k
 
 | mod    | size  | content transfer | total        |
 | ------ | ----- | ---------------- | ------------ |
-| direct | 4kb   | 97.498µs         | 866.299µs    |
-| direct | 256kb | 624.417µs        | 1.02647ms    |
-| direct | 1Mb   | 2.05906ms        | 2.990424ms   |
-| direct | 4Mb   | 6.837846ms       | 7.760798ms   |
-| direct | 16Mb  | 30.671629ms      | 31.881404ms  |
-| direct | 256Mb | 488.276015ms     | 492.736225ms |
-| proxy  | 4kb   | 35.241µs         | 1.137234ms   |
-| proxy  | 256kb | 256.289µs        | 1.090882ms   |
-| proxy  | 1Mb   | 1.331909ms       | 2.269982ms   |
-| proxy  | 4Mb   | 5.966625ms       | 7.323062ms   |
-| proxy  | 16Mb  | 31.34299ms       | 33.883659ms  |
-| proxy  | 256Mb | 604.659363ms     | 623.715397ms |
+| direct | 4kb   | 38.202µs         | 698.372µs    |
+| direct | 256kb | 489.048µs        | 813.301µs    |
+| direct | 1Mb   | 1.84549ms        | 2.67673ms    |
+| direct | 4Mb   | 6.035001ms       | 6.860431ms   |
+| direct | 16Mb  | 24.608875ms      | 25.655674ms  |
+| direct | 256Mb | 478.944781ms     | 483.328069ms |
+| proxy  | 4kb   | 26.409µs         | 3.055611ms   |
+| proxy  | 256kb | 229.48µs         | 2.276647ms   |
+| proxy  | 1Mb   | 1.348357ms       | 7.583335ms   |
+| proxy  | 4Mb   | 10.90011ms       | 15.405417ms  |
+| proxy  | 16Mb  | 34.601686ms      | 38.962934ms  |
+| proxy  | 256Mb | 574.315839ms     | 595.014586ms |
 
 > PS:
 > Here is the log to table regexp `INFO\[[0-9]+\] mod: ([a-z]+), +size: ([0-9]+) +content transfer: ([0-9]+.[0-9]+[µ|m]s) +total: ([0-9]+.[0-9]+[µ|m]s)`
