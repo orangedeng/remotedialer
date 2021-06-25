@@ -161,7 +161,7 @@ func (s *Session) serveMessage(reader io.Reader) error {
 
 	switch message.messageType {
 	case Data:
-		if _, err := io.Copy(conn.tunnelWriter(), message); err != nil {
+		if _, err := io.CopyBuffer(conn.tunnelWriter(), message, make([]byte, sessionWirteBufferSize)); err != nil {
 			s.closeConnection(message.connID, err)
 		}
 	case Error:

@@ -32,6 +32,8 @@ type Server struct {
 	sessions    *sessionManager
 	peers       map[string]peer
 	peerLock    sync.Mutex
+	readBuffer  int
+	writeBuffer int
 }
 
 func New(auth Authorizer, errorWriter ErrorWriter) *Server {
@@ -40,6 +42,8 @@ func New(auth Authorizer, errorWriter ErrorWriter) *Server {
 		authorizer:  auth,
 		errorWriter: errorWriter,
 		sessions:    newSessionManager(),
+		readBuffer:  readBufferSize,
+		writeBuffer: writeBufferSize,
 	}
 }
 
@@ -60,6 +64,8 @@ func (s *Server) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		HandshakeTimeout: 5 * time.Second,
 		CheckOrigin:      func(r *http.Request) bool { return true },
 		Error:            s.errorWriter,
+		ReadBufferSize:   s.readBuffer,
+		WriteBufferSize:  s.writeBuffer,
 	}
 
 	wsConn, err := upgrader.Upgrade(rw, req, nil)

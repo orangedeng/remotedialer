@@ -101,7 +101,7 @@ func newRemoveClient(client string) *message {
 }
 
 func newServerMessage(reader io.Reader) (*message, error) {
-	buf := bufio.NewReader(reader)
+	buf := bufio.NewReaderSize(reader, sessionReadBufferSize)
 
 	id, err := binary.ReadVarint(buf)
 	if err != nil {
